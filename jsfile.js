@@ -14,11 +14,15 @@ $(document).ready(function(){
     // google api website and displays in the HTML
     function videofind(query){
         $.get("https://www.googleapis.com/youtube/v3/search?key=AIzaSyAAOOC0KOMi0QniEruh91kTnRnQTWWkVLs&type=video&part=snippet&maxResults=5&q=" + query, function(data){
+            //all within the get call
+            //console logging for debugging
             console.log("here is data",data);
+                //for each item returned from the get call
                 data.items.forEach(item =>{
+                    // this creates a variable to be returned to the HTML file
                     link =  `<iframe width = "600" height = "550" src = "https://www.youtube.com/embed/${item.id.videoId}" frameboarder="0" allowfullscreen></iframe>`
                     $("#results").append(link)
-                });
+            });
         })
     }
     
